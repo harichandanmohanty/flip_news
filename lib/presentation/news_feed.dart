@@ -14,7 +14,7 @@ class NewsFeed extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      //height: (MediaQuery.sizeOf(context).height - MediaQuery.paddingOf(context).vertical - 180 - 80)/2,
+      height: 600,
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       decoration: const BoxDecoration(
           boxShadow: [
@@ -71,7 +71,7 @@ class NewsFeed extends StatelessWidget {
                         height: 300,
                         fit: BoxFit.cover,
                         imageErrorBuilder: (ctx, obj, _) {
-                          return const SizedBox.shrink();
+                          return const SizedBox();
                         },
                       )),
                 ),
@@ -89,9 +89,9 @@ class NewsFeed extends StatelessWidget {
               Text(
                 description ?? '',
                 //softWrap: true,
-                //maxLines: 2,
+                //maxLines: 3,
                 style: const TextStyle(
-                    //overflow: TextOverflow.ellipsis,
+                    overflow: TextOverflow.ellipsis,
                     fontWeight: FontWeight.bold,
                     fontSize: 18),
               )
