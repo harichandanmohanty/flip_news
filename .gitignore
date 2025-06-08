@@ -45,5 +45,5 @@ app.*.map.json
 # Firebase Config files
 /firebase.json
 /firepit-log.txt
-/lib/firebase_options.dart
+/lib/configurations/firebase_options.dart
 

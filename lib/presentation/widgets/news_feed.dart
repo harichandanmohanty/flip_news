@@ -66,12 +66,17 @@ class NewsFeed extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                       child: FadeInImage.memoryNetwork(
                         placeholder: kTransparentImage,
-                        image: urlToImage!,
+                        image: urlToImage ?? "",
                         width: double.infinity,
                         height: 300,
                         fit: BoxFit.cover,
-                        imageErrorBuilder: (ctx, obj, _) {
-                          return const SizedBox();
+                        imageErrorBuilder: (ctx, error, stackTrace) {
+                          return Container(
+                            width: double.infinity,
+                            height: 300, // Match the image height
+                            color: Colors.grey[300], // Placeholder background
+                            child: const Center(child: Icon(Icons.broken_image, size: 50, color: Colors.grey)),
+                          );
                         },
                       )),
                 ),
@@ -86,14 +91,16 @@ class NewsFeed extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                description ?? '',
-                //softWrap: true,
-                //maxLines: 3,
-                style: const TextStyle(
-                    overflow: TextOverflow.ellipsis,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
+              Expanded(
+                child: Text(
+                  description ?? '',
+                  softWrap: true,
+                  maxLines: null,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
               )
             ],
           ),
